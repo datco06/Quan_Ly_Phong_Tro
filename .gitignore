@@ -1,0 +1,61 @@
+# Local secrets (only explicitly named examples may be committed)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.keystore
+*.jks
+**/secrets/
+**/credentials*.json
+**/*service-account*.json
+**/google-services.json
+**/GoogleService-Info.plist
+
+# Editors / operating system
+.DS_Store
+.idea/
+.vscode/
+*.iml
+*.log
+
+# Flutter / Android / iOS
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+build/
+.gradle/
+local.properties
+key.properties
+Pods/
+.symlinks/
+**/Flutter/ephemeral/
+**/Flutter/Generated.xcconfig
+**/Flutter/flutter_export_environment.sh
+
+# Maven
+target/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+roomchain_ai/data/raw/*
+roomchain_ai/data/processed/*
+roomchain_ai/models/*
+!roomchain_ai/data/raw/.gitkeep
+!roomchain_ai/data/processed/.gitkeep
+!roomchain_ai/models/.gitkeep
+
+# Hardhat (keep package-lock.json and public deployments/ABI)
+node_modules/
+artifacts/
+cache/
+coverage/
+typechain-types/

@@ -1,0 +1,21 @@
+{
+  "name": "roomchain_chain",
+  "version": "0.1.0",
+  "description": "RoomChain local deposit escrow development workspace",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "node": "hardhat node",
+    "clean": "hardhat clean"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "hardhat": "2.29.1"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=20 <21"
+  }
+}

@@ -1,0 +1,321 @@
+BAO CAO CAU TRUC BACKEND ROOMCHAIN
+
+Package goc: com.roomchain
+File Java moi: 100; tat ca 0 byte.
+File cu giu nguyen SHA-256: 22.
+Dev 1: 23; Dev 2: 37; Dev 3 (chuc nang): 31; nen tang: 9.
+Dev 3 se quan ly them 6 file trong cau_hinh/ va bao_mat/ khi trien khai.
+
+DIEU CHINH DUONG DAN MINH HOA:
+- Giu application.yml, khong tao application.properties trung cau hinh.
+- Resources dung src/main/resources, khong tao src/resources.
+- Giu src/test/java va src/test/resources; khong tao test/ o goc.
+- Khong co file Java chuc nang trung ten Entity dung chung.
+- Khong chay Maven, migration, API hoac cai dependency.
+
+CAY THU MUC (gom source, cau hinh va thu muc cu; an target/):
+roomchain_backend/
+├── .mvn/
+│   └── wrapper/
+│       └── maven-wrapper.properties [DA CO, GIU NGUYEN]
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── roomchain/
+│   │   │           ├── ai/
+│   │   │           ├── auth/
+│   │   │           ├── bao_mat/
+│   │   │           │   ├── BoLocJwt.java [MOI, 0 byte]
+│   │   │           │   ├── XuLyJwt.java [MOI, 0 byte]
+│   │   │           │   └── XuLyQuyenTruyCap.java [MOI, 0 byte]
+│   │   │           ├── blockchain/
+│   │   │           ├── cau_hinh/
+│   │   │           │   ├── CauHinhBaoMat.java [MOI, 0 byte]
+│   │   │           │   ├── CauHinhCors.java [MOI, 0 byte]
+│   │   │           │   └── CauHinhUngDung.java [MOI, 0 byte]
+│   │   │           ├── chuc_nang/
+│   │   │           │   ├── chu_tro/
+│   │   │           │   │   ├── duyet_yeu_cau/
+│   │   │           │   │   │   ├── DuyetYeuCauController.java [MOI, 0 byte]
+│   │   │           │   │   │   └── DuyetYeuCauService.java [MOI, 0 byte]
+│   │   │           │   │   ├── quan_ly_cong_no/
+│   │   │           │   │   │   ├── CongNoController.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── CongNoService.java [MOI, 0 byte]
+│   │   │           │   │   │   └── PhiChamTra.java [MOI, 0 byte]
+│   │   │           │   │   ├── quan_ly_dien_nuoc/
+│   │   │           │   │   │   ├── ChiSoDienNuoc.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── ChiSoRepository.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── DienNuocController.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── DienNuocService.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── DongHoDienNuoc.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── DongHoRepository.java [MOI, 0 byte]
+│   │   │           │   │   │   └── KetNoiAiDocSo.java [MOI, 0 byte]
+│   │   │           │   │   ├── quan_ly_hoa_don/
+│   │   │           │   │   │   ├── ChiTietHoaDon.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── HoaDon.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── HoaDonController.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── HoaDonRepository.java [MOI, 0 byte]
+│   │   │           │   │   │   └── HoaDonService.java [MOI, 0 byte]
+│   │   │           │   │   ├── quan_ly_khu_tro/
+│   │   │           │   │   │   ├── KhuTro.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── KhuTroController.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── KhuTroRepository.java [MOI, 0 byte]
+│   │   │           │   │   │   └── KhuTroService.java [MOI, 0 byte]
+│   │   │           │   │   ├── quan_ly_nguoi_thue/
+│   │   │           │   │   │   ├── QuanLyNguoiThueController.java [MOI, 0 byte]
+│   │   │           │   │   │   └── QuanLyNguoiThueService.java [MOI, 0 byte]
+│   │   │           │   │   ├── quan_ly_phong/
+│   │   │           │   │   │   ├── PhongTro.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── PhongTroController.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── PhongTroRepository.java [MOI, 0 byte]
+│   │   │           │   │   │   └── PhongTroService.java [MOI, 0 byte]
+│   │   │           │   │   ├── tac_vu_dinh_ky/
+│   │   │           │   │   │   ├── CapNhatPhiChamTra.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── NhacGhiDienNuoc.java [MOI, 0 byte]
+│   │   │           │   │   │   └── NhacThanhToan.java [MOI, 0 byte]
+│   │   │           │   │   ├── thanh_toan/
+│   │   │           │   │   │   ├── TaoMaVietQr.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── ThanhToan.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── ThanhToanController.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── ThanhToanRepository.java [MOI, 0 byte]
+│   │   │           │   │   │   └── ThanhToanService.java [MOI, 0 byte]
+│   │   │           │   │   └── thong_ke/
+│   │   │           │   │       ├── ThongKeController.java [MOI, 0 byte]
+│   │   │           │   │       └── ThongKeService.java [MOI, 0 byte]
+│   │   │           │   ├── dung_chung/
+│   │   │           │   │   ├── hop_dong/
+│   │   │           │   │   │   ├── HopDong.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── HopDongController.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── HopDongRepository.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── HopDongService.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── KyHopDongService.java [MOI, 0 byte]
+│   │   │           │   │   │   └── TaoHopDongRequest.java [MOI, 0 byte]
+│   │   │           │   │   ├── ket_noi_blockchain/
+│   │   │           │   │   │   ├── BlockchainService.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── DongBoGiaoDich.java [MOI, 0 byte]
+│   │   │           │   │   │   └── GiaoDichBlockchain.java [MOI, 0 byte]
+│   │   │           │   │   ├── tai_khoan/
+│   │   │           │   │   │   ├── DangKyRequest.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── DangNhapRequest.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── DangNhapResponse.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── NguoiDung.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── NguoiDungRepository.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── TaiKhoanController.java [MOI, 0 byte]
+│   │   │           │   │   │   └── TaiKhoanService.java [MOI, 0 byte]
+│   │   │           │   │   ├── thong_bao/
+│   │   │           │   │   │   ├── GuiThongBaoFirebase.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── ThongBao.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── ThongBaoController.java [MOI, 0 byte]
+│   │   │           │   │   │   └── ThongBaoService.java [MOI, 0 byte]
+│   │   │           │   │   ├── thong_tin_ca_nhan/
+│   │   │           │   │   │   ├── CaNhanController.java [MOI, 0 byte]
+│   │   │           │   │   │   └── CaNhanService.java [MOI, 0 byte]
+│   │   │           │   │   ├── tien_coc/
+│   │   │           │   │   │   ├── KhoanKhauTru.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── QuyetToanTienCoc.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── TienCoc.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── TienCocController.java [MOI, 0 byte]
+│   │   │           │   │   │   ├── TienCocRepository.java [MOI, 0 byte]
+│   │   │           │   │   │   └── TienCocService.java [MOI, 0 byte]
+│   │   │           │   │   └── vi_blockchain/
+│   │   │           │   │       ├── ViController.java [MOI, 0 byte]
+│   │   │           │   │       ├── ViNguoiDung.java [MOI, 0 byte]
+│   │   │           │   │       └── ViService.java [MOI, 0 byte]
+│   │   │           │   └── nguoi_thue/
+│   │   │           │       ├── ban_do/
+│   │   │           │       │   ├── LoTrinhController.java [MOI, 0 byte]
+│   │   │           │       │   └── LoTrinhService.java [MOI, 0 byte]
+│   │   │           │       ├── chi_tiet_phong/
+│   │   │           │       │   ├── ChiTietPhongController.java [MOI, 0 byte]
+│   │   │           │       │   └── ChiTietPhongService.java [MOI, 0 byte]
+│   │   │           │       ├── goi_y_ai/
+│   │   │           │       │   ├── GoiYPhongController.java [MOI, 0 byte]
+│   │   │           │       │   ├── GoiYPhongRequest.java [MOI, 0 byte]
+│   │   │           │       │   ├── GoiYPhongResponse.java [MOI, 0 byte]
+│   │   │           │       │   ├── GoiYPhongService.java [MOI, 0 byte]
+│   │   │           │       │   └── KetNoiAiGoiY.java [MOI, 0 byte]
+│   │   │           │       ├── phong_dang_thue/
+│   │   │           │       │   ├── PhongDangThueController.java [MOI, 0 byte]
+│   │   │           │       │   └── PhongDangThueService.java [MOI, 0 byte]
+│   │   │           │       ├── sua_chua/
+│   │   │           │       │   ├── SuaChuaController.java [MOI, 0 byte]
+│   │   │           │       │   ├── SuaChuaRepository.java [MOI, 0 byte]
+│   │   │           │       │   ├── SuaChuaService.java [MOI, 0 byte]
+│   │   │           │       │   └── YeuCauSuaChua.java [MOI, 0 byte]
+│   │   │           │       ├── tim_phong/
+│   │   │           │       │   ├── TimPhongController.java [MOI, 0 byte]
+│   │   │           │       │   ├── TimPhongRequest.java [MOI, 0 byte]
+│   │   │           │       │   └── TimPhongService.java [MOI, 0 byte]
+│   │   │           │       └── yeu_cau_thue/
+│   │   │           │           ├── TaoYeuCauThueRequest.java [MOI, 0 byte]
+│   │   │           │           ├── YeuCauThue.java [MOI, 0 byte]
+│   │   │           │           ├── YeuCauThueController.java [MOI, 0 byte]
+│   │   │           │           ├── YeuCauThueRepository.java [MOI, 0 byte]
+│   │   │           │           └── YeuCauThueService.java [MOI, 0 byte]
+│   │   │           ├── config/
+│   │   │           ├── contract/
+│   │   │           ├── deposit/
+│   │   │           ├── dung_chung/
+│   │   │           │   ├── ngoai_le/
+│   │   │           │   │   ├── NgoaiLeNghiepVu.java [MOI, 0 byte]
+│   │   │           │   │   └── XuLyNgoaiLe.java [MOI, 0 byte]
+│   │   │           │   ├── phan_hoi/
+│   │   │           │   │   └── PhanHoiApi.java [MOI, 0 byte]
+│   │   │           │   └── tien_ich/
+│   │   │           ├── invoice/
+│   │   │           ├── meter/
+│   │   │           ├── notification/
+│   │   │           ├── payment/
+│   │   │           ├── property/
+│   │   │           ├── rental/
+│   │   │           ├── room/
+│   │   │           ├── security/
+│   │   │           ├── user/
+│   │   │           └── RoomChainApplication.java [DA CO, GIU NGUYEN]
+│   │   └── resources/
+│   │       ├── db/
+│   │       │   └── migration/
+│   │       ├── static/
+│   │       ├── templates/
+│   │       └── application.yml [DA CO, GIU NGUYEN]
+│   └── test/
+│       ├── java/
+│       │   └── com/
+│       │       └── roomchain/
+│       │           └── RoomChainApplicationTests.java [DA CO, GIU NGUYEN]
+│       └── resources/
+│           └── application-test.yml [DA CO, GIU NGUYEN]
+├── .gitattributes [DA CO, GIU NGUYEN]
+├── .gitignore [DA CO, GIU NGUYEN]
+├── HELP.md [DA CO, GIU NGUYEN]
+├── README.md [DA CO, GIU NGUYEN]
+├── mvnw [DA CO, GIU NGUYEN]
+├── mvnw.cmd [DA CO, GIU NGUYEN]
+└── pom.xml [DA CO, GIU NGUYEN]
+
+DANH SACH FILE JAVA MOI:
+roomchain_backend/src/main/java/com/roomchain/cau_hinh/CauHinhBaoMat.java
+roomchain_backend/src/main/java/com/roomchain/cau_hinh/CauHinhCors.java
+roomchain_backend/src/main/java/com/roomchain/cau_hinh/CauHinhUngDung.java
+roomchain_backend/src/main/java/com/roomchain/bao_mat/BoLocJwt.java
+roomchain_backend/src/main/java/com/roomchain/bao_mat/XuLyJwt.java
+roomchain_backend/src/main/java/com/roomchain/bao_mat/XuLyQuyenTruyCap.java
+roomchain_backend/src/main/java/com/roomchain/dung_chung/phan_hoi/PhanHoiApi.java
+roomchain_backend/src/main/java/com/roomchain/dung_chung/ngoai_le/XuLyNgoaiLe.java
+roomchain_backend/src/main/java/com/roomchain/dung_chung/ngoai_le/NgoaiLeNghiepVu.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/tim_phong/TimPhongController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/tim_phong/TimPhongService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/tim_phong/TimPhongRequest.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/chi_tiet_phong/ChiTietPhongController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/chi_tiet_phong/ChiTietPhongService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/goi_y_ai/GoiYPhongController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/goi_y_ai/GoiYPhongService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/goi_y_ai/GoiYPhongRequest.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/goi_y_ai/GoiYPhongResponse.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/goi_y_ai/KetNoiAiGoiY.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/ban_do/LoTrinhController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/ban_do/LoTrinhService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/yeu_cau_thue/YeuCauThueController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/yeu_cau_thue/YeuCauThueService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/yeu_cau_thue/YeuCauThueRepository.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/yeu_cau_thue/YeuCauThue.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/yeu_cau_thue/TaoYeuCauThueRequest.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/phong_dang_thue/PhongDangThueController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/phong_dang_thue/PhongDangThueService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/sua_chua/SuaChuaController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/sua_chua/SuaChuaService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/sua_chua/YeuCauSuaChua.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/nguoi_thue/sua_chua/SuaChuaRepository.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_khu_tro/KhuTroController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_khu_tro/KhuTroService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_khu_tro/KhuTroRepository.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_khu_tro/KhuTro.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_phong/PhongTroController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_phong/PhongTroService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_phong/PhongTroRepository.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_phong/PhongTro.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_nguoi_thue/QuanLyNguoiThueController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_nguoi_thue/QuanLyNguoiThueService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/duyet_yeu_cau/DuyetYeuCauController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/duyet_yeu_cau/DuyetYeuCauService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_dien_nuoc/DienNuocController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_dien_nuoc/DienNuocService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_dien_nuoc/DongHoDienNuoc.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_dien_nuoc/ChiSoDienNuoc.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_dien_nuoc/DongHoRepository.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_dien_nuoc/ChiSoRepository.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_dien_nuoc/KetNoiAiDocSo.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_hoa_don/HoaDonController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_hoa_don/HoaDonService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_hoa_don/HoaDonRepository.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_hoa_don/HoaDon.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_hoa_don/ChiTietHoaDon.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_cong_no/CongNoController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_cong_no/CongNoService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/quan_ly_cong_no/PhiChamTra.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/thanh_toan/ThanhToanController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/thanh_toan/ThanhToanService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/thanh_toan/ThanhToanRepository.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/thanh_toan/ThanhToan.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/thanh_toan/TaoMaVietQr.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/thong_ke/ThongKeController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/thong_ke/ThongKeService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/tac_vu_dinh_ky/NhacGhiDienNuoc.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/tac_vu_dinh_ky/NhacThanhToan.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/chu_tro/tac_vu_dinh_ky/CapNhatPhiChamTra.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tai_khoan/TaiKhoanController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tai_khoan/TaiKhoanService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tai_khoan/NguoiDung.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tai_khoan/NguoiDungRepository.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tai_khoan/DangNhapRequest.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tai_khoan/DangKyRequest.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tai_khoan/DangNhapResponse.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/thong_tin_ca_nhan/CaNhanController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/thong_tin_ca_nhan/CaNhanService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/hop_dong/HopDongController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/hop_dong/HopDongService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/hop_dong/HopDongRepository.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/hop_dong/HopDong.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/hop_dong/TaoHopDongRequest.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/hop_dong/KyHopDongService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/vi_blockchain/ViController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/vi_blockchain/ViService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/vi_blockchain/ViNguoiDung.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tien_coc/TienCocController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tien_coc/TienCocService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tien_coc/TienCocRepository.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tien_coc/TienCoc.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tien_coc/KhoanKhauTru.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/tien_coc/QuyetToanTienCoc.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/ket_noi_blockchain/BlockchainService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/ket_noi_blockchain/DongBoGiaoDich.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/ket_noi_blockchain/GiaoDichBlockchain.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/thong_bao/ThongBaoController.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/thong_bao/ThongBaoService.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/thong_bao/ThongBao.java
+roomchain_backend/src/main/java/com/roomchain/chuc_nang/dung_chung/thong_bao/GuiThongBaoFirebase.java
+
+DANH SACH FILE DA CO DUOC GIU NGUYEN:
+roomchain_backend/.gitattributes
+roomchain_backend/.gitignore
+roomchain_backend/.mvn/wrapper/maven-wrapper.properties
+roomchain_backend/HELP.md
+roomchain_backend/README.md
+roomchain_backend/mvnw
+roomchain_backend/mvnw.cmd
+roomchain_backend/pom.xml
+roomchain_backend/src/main/java/com/roomchain/RoomChainApplication.java
+roomchain_backend/src/main/resources/application.yml
+roomchain_backend/src/test/java/com/roomchain/RoomChainApplicationTests.java
+roomchain_backend/src/test/resources/application-test.yml
+roomchain_backend/target/classes/application.yml
+roomchain_backend/target/classes/com/roomchain/RoomChainApplication.class
+roomchain_backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+roomchain_backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+roomchain_backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+roomchain_backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+roomchain_backend/target/surefire-reports/TEST-com.roomchain.RoomChainApplicationTests.xml
+roomchain_backend/target/surefire-reports/com.roomchain.RoomChainApplicationTests.txt
+roomchain_backend/target/test-classes/application-test.yml
+roomchain_backend/target/test-classes/com/roomchain/RoomChainApplicationTests.class

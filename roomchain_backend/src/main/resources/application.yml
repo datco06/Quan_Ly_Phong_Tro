@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: roomchain_backend
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/roomchain}
+    username: ${DB_USERNAME:roomchain}
+    password: ${DB_PASSWORD:}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+
+server:
+  port: ${PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+# Integration addresses only; HTTP/RPC clients are not implemented yet.
+roomchain:
+  ai:
+    base-url: ${AI_BASE_URL:http://localhost:8000}
+  blockchain:
+    rpc-url: ${BLOCKCHAIN_RPC_URL:http://127.0.0.1:8545}
