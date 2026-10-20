@@ -1,0 +1,15 @@
+Nguồn: tạo mới bằng công cụ image_gen tích hợp, dùng ảnh thiết kế do người dùng cung cấp làm tham chiếu bố cục và phong cách. Đây là hình minh họa tái tạo, không phải asset gốc xuất từ Figma. Không dùng screenshot toàn màn hình làm giao diện.
+
+Bộ prompt:
+
+ban_do_den_truong.png
+Create ONLY the illustration inside the FIRST onboarding screen's rounded rectangular mint panel in the supplied reference image, no UI, no text or buttons. Landscape ratio about 1.4:1. Soft pale mint street map with thin white roads and a winding dark teal commuting route. Outlined teal house bottom left, detailed small blue university building upper right, friendly young Vietnamese female university student with black ponytail wearing a cream shirt and navy backpack, waist-up at bottom right, looking toward left. Detailed professional flat editorial vector-like illustration with natural facial features, matching the reference, subtle pastel greens. Fill image edge to edge in pale mint, no border, no phone frame around the overall art, no lettering, no watermark.
+
+dien_thoai_tim_phong.png
+Create ONLY the illustration inside the SECOND onboarding screen's rounded rectangular mint panel in the supplied reference image, no UI screen, no headings or buttons. Landscape ratio about 1.4:1. A slightly angled realistic illustrated smartphone in center showing a pale mint map with white streets and small teal location pins. Two small floating accommodation listing cards to its left containing tasteful small rendered apartment room interior thumbnails. Small mint apartment building and stylized green tree to right. Phone nearly fills illustration height, cropped slightly at bottom. Professional polished flat editorial illustration with subtle dimensionality, matching reference, restrained mint and teal palette. Pale mint abstract background fills image edge to edge. No readable text, no watermarks.
+
+nguoi_thue.png (nền trong suốt)
+Create ONLY the young Vietnamese female student character from the THIRD screen's FIRST role card in the reference. Isolated waist-up character with transparent background. Three-quarter profile facing right, friendly natural facial features, long black ponytail, light cream blouse, dark navy backpack straps and backpack visible behind her, right hand holding strap near chest. Professional detailed flat editorial vector-like illustration closely matching reference. Character fills portrait image bounds, clean edges, no text, no icons, no border, no background, no UI card.
+
+chu_tro.png (nền trong suốt)
+Create ONLY the Vietnamese male landlord character from the THIRD screen's SECOND role card in reference. Isolated waist-up character with transparent background. A friendly middle-aged Vietnamese man with short neatly combed black hair, dark glasses, sage green collared shirt, looking down at and holding a dark navy tablet in both hands. Three-quarter pose facing right. Professional detailed flat editorial vector-like illustration matching reference, natural facial features and hands. Character fills portrait image bounds, clean edges, no text, no icons, no border, no background, no UI card.

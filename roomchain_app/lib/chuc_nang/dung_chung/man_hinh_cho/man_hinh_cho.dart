@@ -8,12 +8,14 @@ import '../../../../dung_chung/giao_dien/chu_de_ung_dung.dart';
 import '../../../../dung_chung/giao_dien/khoang_cach.dart';
 import '../../../../dung_chung/giao_dien/kieu_chu.dart';
 import '../../../../dung_chung/thanh_phan/nut_bam.dart';
+import '../../../../ung_dung/dieu_huong.dart';
 
 // Chạy riêng màn hình A01 để xem thử.
 void main() => runApp(
   MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ChuDeUngDung.sang,
+    onGenerateRoute: DieuHuong.taoRoute,
     home: const ManHinhCho(),
   ),
 );
@@ -29,11 +31,7 @@ class ManHinhCho extends StatelessWidget {
       khiBatDau!();
       return;
     }
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        const SnackBar(content: Text('Phần giới thiệu sẽ sớm có mặt.')),
-      );
+    Navigator.of(context).pushNamed(DieuHuong.gioiThieu1);
   }
 
   @override

@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:roomchain_app/chuc_nang/dung_chung/tai_khoan/man_hinh_cho.dart';
+import 'package:roomchain_app/chuc_nang/dung_chung/man_hinh_cho/man_hinh_cho.dart';
 import 'package:roomchain_app/dung_chung/roomchain_ui.dart';
+import 'package:roomchain_app/ung_dung/dieu_huong.dart';
+import 'package:roomchain_app/chuc_nang/dung_chung/man_hinh_cho/gioi_thieu_ung_dung_1.dart';
 
 void main() {
   const thuMucAnh = String.fromEnvironment('THU_MUC_ANH');
@@ -26,6 +28,7 @@ void main() {
   Widget khung({VoidCallback? khiBatDau, double coChu = 1}) => MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ChuDeUngDung.sang,
+    onGenerateRoute: DieuHuong.taoRoute,
     builder: (context, noiDung) => MediaQuery(
       data: MediaQuery.of(context)
           .copyWith(textScaler: TextScaler.linear(coChu)),
@@ -106,14 +109,11 @@ void main() {
     expect(find.byType(SnackBar), findsNothing);
   });
 
-  testWidgets('A02 chưa có: phản hồi nhấn, không mở route không tồn tại', (
-    tester,
-  ) async {
+  testWidgets('Bắt đầu mở trang giới thiệu đầu tiên', (tester) async {
     await tester.pumpWidget(khung());
     await tester.tap(find.byType(NutBam));
     await tester.pumpAndSettle();
-    expect(find.text('Phần giới thiệu sẽ sớm có mặt.'), findsOneWidget);
-    expect(find.byType(ManHinhCho), findsOneWidget);
+    expect(find.byType(GioiThieuUngDung1), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }
