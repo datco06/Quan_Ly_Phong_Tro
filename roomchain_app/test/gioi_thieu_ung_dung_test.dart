@@ -231,13 +231,10 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('Chưa có đăng ký/đăng nhập: không mở route lỗi hoặc Dashboard', (
+  testWidgets('Bỏ qua vai trò báo đăng nhập chưa có, không mở Dashboard', (
     tester,
   ) async {
     await tester.pumpWidget(khung(const ChonVaiTro()));
-    await tester.tap(find.text('Bắt đầu ngay'));
-    await tester.pump();
-    expect(find.text('Màn hình đăng ký đang được hoàn thiện.'), findsOneWidget);
     await tester.tap(find.text('Bỏ qua'));
     await tester.pumpAndSettle();
     expect(

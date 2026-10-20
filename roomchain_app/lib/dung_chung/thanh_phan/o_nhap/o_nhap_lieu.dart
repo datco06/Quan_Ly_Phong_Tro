@@ -17,6 +17,9 @@ class ONhapLieu extends StatelessWidget {
     this.anNoiDung = false,
     this.loi,
     this.batBuoc = false,
+    this.nutTapTrung,
+    this.hanhDongBanPhim,
+    this.khiGui,
   });
   final String nhan;
   final String? goiY, loi;
@@ -27,9 +30,15 @@ class ONhapLieu extends StatelessWidget {
   final Widget? bieuTuongDau, bieuTuongCuoi;
   final ValueChanged<String>? khiThayDoi;
   final int soDong;
+  final FocusNode? nutTapTrung;
+  final TextInputAction? hanhDongBanPhim;
+  final ValueChanged<String>? khiGui;
   @override
   Widget build(BuildContext context) => TextFormField(
     controller: controller,
+    focusNode: nutTapTrung,
+    textInputAction: hanhDongBanPhim,
+    onFieldSubmitted: khiGui,
     keyboardType: kieuBanPhim,
     validator: kiemTra,
     enabled: choPhep,

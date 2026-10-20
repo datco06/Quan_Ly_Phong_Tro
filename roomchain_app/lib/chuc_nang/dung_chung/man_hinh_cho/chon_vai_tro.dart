@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../dung_chung/roomchain_ui.dart';
+import '../../../../ung_dung/dieu_huong.dart';
 import 'khung_gioi_thieu.dart';
 
 class ChonVaiTro extends StatefulWidget {
@@ -22,7 +23,7 @@ class _ChonVaiTroState extends State<ChonVaiTro> {
     if (widget.khiDangKy != null) {
       widget.khiDangKy!(vaiTro);
     } else {
-      _thongBao('Màn hình đăng ký đang được hoàn thiện.');
+      Navigator.of(context).pushNamed(DieuHuong.dangKy, arguments: vaiTro);
     }
   }
 
