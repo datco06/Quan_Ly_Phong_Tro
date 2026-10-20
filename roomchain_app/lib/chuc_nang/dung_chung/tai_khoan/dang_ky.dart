@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../dung_chung/roomchain_ui.dart';
+import '../../../../ung_dung/dieu_huong.dart';
 
 // Dữ liệu tạm cho bước 2, chỉ truyền trong bộ nhớ, không ghi log hoặc lưu trữ.
 class ThongTinDangKyTam {
@@ -101,7 +102,18 @@ class _DangKyState extends State<DangKy> {
     if (!hopLe || !_dongY) return;
     FocusScope.of(context).unfocus();
     if (widget.khiTiepTuc == null) {
-      final hoSo = widget.vaiTro == 'TENANT' ? 'người thuê' : 'chủ trọ';
+      if (widget.vaiTro == 'TENANT') {
+        // Giữ form A04 khi quay lại; không truyền mật khẩu vào route hồ sơ.
+        setState(() => _dangGui = true);
+        try {
+          await Navigator.of(context)
+              .pushNamed(DieuHuong.hoanThienHoSo, arguments: widget.vaiTro);
+        } finally {
+          if (mounted) setState(() => _dangGui = false);
+        }
+        return;
+      }
+      final hoSo = 'chủ trọ';
       setState(
         () => _loiXuLy =
             'Thông tin hợp lệ. Bước hoàn thiện hồ sơ $hoSo chưa có. Tài khoản chưa được tạo.',

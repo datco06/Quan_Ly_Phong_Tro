@@ -345,9 +345,9 @@ void main() {
   }
 
   testWidgets(
-    'Done khi hợp lệ báo bước 2 chưa có, không tuyên bố tạo tài khoản',
+    'LANDLORD: Done báo hồ sơ chủ trọ chưa có, không mở hồ sơ Tenant',
     (tester) async {
-      await tester.pumpWidget(khung(const DangKy(vaiTro: 'TENANT')));
+      await tester.pumpWidget(khung(const DangKy(vaiTro: 'LANDLORD')));
       await dienHopLe(tester);
       await dongY(tester);
       await tester.showKeyboard(oNhap('xac_nhan'));
