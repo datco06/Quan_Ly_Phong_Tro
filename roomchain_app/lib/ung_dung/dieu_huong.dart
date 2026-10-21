@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../dung_chung/mo_hinh/nguoi_dung.dart';
+import '../chuc_nang/dung_chung/thong_bao/danh_sach_thong_bao.dart';
+
 import '../chuc_nang/dung_chung/tai_khoan/dang_ky.dart';
 import '../chuc_nang/dung_chung/tai_khoan/dang_nhap.dart';
 import '../chuc_nang/dung_chung/tai_khoan/hoan_thien_ho_so.dart';
@@ -14,6 +17,7 @@ abstract final class DieuHuong {
   static const chonVaiTro = '/chon-vai-tro';
   static const dangKy = '/dang-ky';
   static const dangNhap = '/dang-nhap';
+  static const thongBao = '/thong-bao';
   static const hoanThienHoSo = '/hoan-thien-ho-so';
 
   // Chỉ đăng ký các màn hình đã có giao diện thật.
@@ -32,6 +36,12 @@ abstract final class DieuHuong {
         trang = DangKy(vaiTro: vaiTro! as String);
       case dangNhap:
         trang = const DangNhap();
+      case thongBao:
+        final vaiTro = thongTin.arguments;
+        if (vaiTro != 'TENANT' && vaiTro != 'LANDLORD') return null;
+        trang = DanhSachThongBao(
+          vaiTro: vaiTro == 'TENANT' ? VaiTro.tenant : VaiTro.landlord,
+        );
       case hoanThienHoSo:
         if (thongTin.arguments != 'TENANT') return null;
         trang = const HoanThienHoSo(vaiTro: 'TENANT');
