@@ -1,4 +1,23 @@
-enum TrangThaiHopDong { nhap, choKy, dangHieuLuc, daKetThuc }
+enum TrangThaiHopDong { nhap, choKy, choCoc, dangHieuLuc, daKetThuc }
+
+class CauHinhHopDong {
+  const CauHinhHopDong({
+    this.phiDichVu = 300000,
+    this.donGiaDien = 4000,
+    this.donGiaNuoc = 30000,
+    this.internet = 100000,
+    this.khoanKhac = 0,
+    this.ngayGhiSo = 28,
+    this.thanhToanTu = 1,
+    this.thanhToanDen = 5,
+    this.phuThuCham = 50000,
+    this.ketThucSom = 'Hai bên thỏa thuận kết thúc sớm',
+    this.noiQuy = '',
+  });
+  final int phiDichVu, donGiaDien, donGiaNuoc, internet, khoanKhac;
+  final int ngayGhiSo, thanhToanTu, thanhToanDen, phuThuCham;
+  final String ketThucSom, noiQuy;
+}
 
 class HopDong {
   const HopDong({
@@ -11,6 +30,7 @@ class HopDong {
     required this.giaThue,
     required this.tienCoc,
     required this.trangThai,
+    this.cauHinh = const CauHinhHopDong(),
   });
   final String id;
   final String maHopDong;
@@ -21,6 +41,7 @@ class HopDong {
   final int giaThue;
   final int tienCoc;
   final TrangThaiHopDong trangThai;
+  final CauHinhHopDong cauHinh;
 
   HopDong copyWith({
     String? id,
@@ -32,6 +53,7 @@ class HopDong {
     int? giaThue,
     int? tienCoc,
     TrangThaiHopDong? trangThai,
+    CauHinhHopDong? cauHinh,
   }) => HopDong(
     id: id ?? this.id,
     maHopDong: maHopDong ?? this.maHopDong,
@@ -42,5 +64,6 @@ class HopDong {
     giaThue: giaThue ?? this.giaThue,
     tienCoc: tienCoc ?? this.tienCoc,
     trangThai: trangThai ?? this.trangThai,
+    cauHinh: cauHinh ?? this.cauHinh,
   );
 }

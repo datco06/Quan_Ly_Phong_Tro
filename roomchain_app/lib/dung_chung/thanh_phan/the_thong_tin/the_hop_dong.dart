@@ -33,6 +33,7 @@ class TheHopDong extends StatelessWidget {
           nhan: switch (hopDong.trangThai) {
             TrangThaiHopDong.nhap => 'Nháp',
             TrangThaiHopDong.choKy => 'Chờ ký',
+            TrangThaiHopDong.choCoc => 'Chờ cọc',
             TrangThaiHopDong.dangHieuLuc => 'Đang hiệu lực',
             TrangThaiHopDong.daKetThuc => 'Đã kết thúc',
           },

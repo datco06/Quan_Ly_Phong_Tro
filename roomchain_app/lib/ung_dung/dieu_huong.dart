@@ -1,3 +1,7 @@
+import '../chuc_nang/dung_chung/hop_dong/danh_sach_hop_dong.dart';
+import '../chuc_nang/dung_chung/hop_dong/tao_hop_dong.dart';
+import '../dung_chung/du_lieu_mau/kho_hop_dong_mau.dart';
+
 import 'package:flutter/material.dart';
 
 import '../dung_chung/mo_hinh/nguoi_dung.dart';
@@ -17,6 +21,8 @@ abstract final class DieuHuong {
   static const chonVaiTro = '/chon-vai-tro';
   static const dangKy = '/dang-ky';
   static const dangNhap = '/dang-nhap';
+  static const danhSachHopDong = '/hop-dong';
+  static const taoHopDong = '/hop-dong/tao';
   static const thongBao = '/thong-bao';
   static const hoanThienHoSo = '/hoan-thien-ho-so';
 
@@ -24,6 +30,17 @@ abstract final class DieuHuong {
   static Route<dynamic>? taoRoute(RouteSettings thongTin) {
     final Widget trang;
     switch (thongTin.name) {
+      case danhSachHopDong:
+        final kho = thongTin.arguments;
+        if (kho != null && kho is! KhoHopDongMau) return null;
+        trang = DanhSachHopDong(kho: kho as KhoHopDongMau?);
+      case taoHopDong:
+        final kho = thongTin.arguments;
+        if (kho != null && kho is! KhoHopDongMau) return null;
+        return MaterialPageRoute<dynamic>(
+          settings: thongTin,
+          builder: (_) => TaoHopDong(kho: kho as KhoHopDongMau?),
+        );
       case gioiThieu1:
         trang = const GioiThieuUngDung1();
       case gioiThieu2:
