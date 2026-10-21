@@ -11,6 +11,7 @@ import 'package:roomchain_app/chuc_nang/dung_chung/man_hinh_cho/gioi_thieu_ung_d
 import 'package:roomchain_app/chuc_nang/dung_chung/man_hinh_cho/man_hinh_cho.dart';
 import 'package:roomchain_app/dung_chung/roomchain_ui.dart';
 import 'package:roomchain_app/ung_dung/dieu_huong.dart';
+import 'package:roomchain_app/chuc_nang/dung_chung/tai_khoan/dang_nhap.dart';
 
 void main() {
   const thuMucAnh = String.fromEnvironment('THU_MUC_ANH');
@@ -231,17 +232,13 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('Bỏ qua vai trò báo đăng nhập chưa có, không mở Dashboard', (
+  testWidgets('Bỏ qua vai trò mở đăng nhập, không mở Dashboard', (
     tester,
   ) async {
     await tester.pumpWidget(khung(const ChonVaiTro()));
     await tester.tap(find.text('Bỏ qua'));
     await tester.pumpAndSettle();
-    expect(
-      find.text('Màn hình đăng nhập đang được hoàn thiện.'),
-      findsOneWidget,
-    );
-    expect(find.byType(ChonVaiTro), findsOneWidget);
+    expect(find.byType(DangNhap), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }

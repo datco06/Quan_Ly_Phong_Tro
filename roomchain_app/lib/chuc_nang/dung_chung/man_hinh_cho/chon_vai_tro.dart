@@ -31,14 +31,8 @@ class _ChonVaiTroState extends State<ChonVaiTro> {
     if (widget.khiDangNhap != null) {
       widget.khiDangNhap!();
     } else {
-      _thongBao('Màn hình đăng nhập đang được hoàn thiện.');
+      Navigator.of(context).pushNamed(DieuHuong.dangNhap);
     }
-  }
-
-  void _thongBao(String noiDung) {
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(SnackBar(content: Text(noiDung)));
   }
 
   @override

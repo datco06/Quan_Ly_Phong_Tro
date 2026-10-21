@@ -393,6 +393,32 @@ class _DangKyState extends State<DangKy> {
                 dangTai: _dangGui,
                 khiNhan: _taoTaiKhoan,
               ),
+              const SizedBox(height: 12),
+              // Phần chuyển sang đăng nhập khi đã có tài khoản.
+              Center(
+                child: TextButton(
+                  onPressed: _dangGui
+                      ? null
+                      : () =>
+                            Navigator.of(context).pushNamed(DieuHuong.dangNhap),
+                  child: Text.rich(
+                    TextSpan(
+                      text: 'Bạn đã có tài khoản? ',
+                      style: KieuChu.noiDung.copyWith(color: BangMau.chuPhu),
+                      children: const [
+                        TextSpan(
+                          text: 'Đăng nhập',
+                          style: TextStyle(
+                            color: BangMau.chinh,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
