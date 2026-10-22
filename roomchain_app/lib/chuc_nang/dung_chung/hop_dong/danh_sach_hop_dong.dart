@@ -140,6 +140,12 @@ class _DanhSachHopDongState extends State<DanhSachHopDong> {
                     onSelected: (muc) {
                       if (muc == 'tao') {
                         _taoMoi();
+                      } else if (muc == 'tien_coc') {
+                        Navigator.pushNamed(
+                          context,
+                          DieuHuong.quanLyTienCoc,
+                          arguments: _kho,
+                        );
                       } else {
                         _kho.lamMoi();
                       }
@@ -148,6 +154,10 @@ class _DanhSachHopDongState extends State<DanhSachHopDong> {
                       PopupMenuItem(
                         value: 'tao',
                         child: Text('Tạo hợp đồng mới'),
+                      ),
+                      PopupMenuItem(
+                        value: 'tien_coc',
+                        child: Text('Quản lý tiền cọc'),
                       ),
                       PopupMenuItem(
                         value: 'lam_moi',
@@ -247,7 +257,14 @@ class _DanhSachHopDongState extends State<DanhSachHopDong> {
                             if (widget.khiMoChiTiet != null) {
                               widget.khiMoChiTiet!(ds[i].id);
                             } else {
-                              hienThiHopDongMau(context, ds[i], _kho);
+                              Navigator.pushNamed(
+                                context,
+                                DieuHuong.chiTietHopDong,
+                                arguments: ThamSoHopDong(
+                                  hopDongId: ds[i].id,
+                                  kho: _kho,
+                                ),
+                              );
                             }
                           },
                         ),

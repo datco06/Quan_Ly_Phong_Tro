@@ -56,41 +56,72 @@ class NhanHopDong extends StatelessWidget {
   }
 }
 
-Future<void> hienThiHopDongMau(
-  BuildContext context,
-  HopDong h,
-  KhoHopDongMau kho,
-) => showDialog<void>(
-  context: context,
-  builder: (context) => AlertDialog(
-    title: Text(h.maHopDong),
-    content: SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Chưa có màn hình chi tiết hợp đồng. Đây là thông tin trong bộ nhớ demo.',
-          ),
-          const SizedBox(height: 12),
-          NhanHopDong(trangThai: h.trangThai),
-          DongThongTin(nhan: 'Phòng', giaTri: kho.phong(h.phongId).maPhong),
-          DongThongTin(
-            nhan: 'Người thuê',
-            giaTri: kho.nguoi(h.nguoiThueId).hoTen,
-          ),
-          DongThongTin(nhan: 'Bắt đầu', giaTri: dinhDangNgay(h.ngayBatDau)),
-          DongThongTin(nhan: 'Kết thúc', giaTri: dinhDangNgay(h.ngayKetThuc)),
-          DongThongTin(nhan: 'Tiền phòng', giaTri: dinhDangVND(h.giaThue)),
-          DongThongTin(nhan: 'Tiền cọc', giaTri: dinhDangVND(h.tienCoc)),
-        ],
-      ),
+class ThongTinHopDong extends StatelessWidget {
+  const ThongTinHopDong({super.key, required this.hopDong, required this.kho});
+  final HopDong hopDong;
+  final KhoHopDongMau kho;
+  @override
+  Widget build(BuildContext context) {
+    final h = hopDong;
+    final p = kho.phong(h.phongId);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('Thông tin hợp đồng', style: KieuChu.noiDungDam),
+        const SizedBox(height: 8),
+        DongThongTin(nhan: 'Mã hợp đồng', giaTri: h.maHopDong),
+        DongThongTin(
+          nhan: 'Phòng',
+          giaTri: '${p.maPhong} · ${p.dienTich.toStringAsFixed(0)}m²',
+        ),
+        DongThongTin(
+          nhan: 'Người thuê',
+          giaTri: kho.nguoi(h.nguoiThueId).hoTen,
+        ),
+        DongThongTin(
+          nhan: 'Thời hạn',
+          giaTri:
+              '${dinhDangNgay(h.ngayBatDau)} – ${dinhDangNgay(h.ngayKetThuc)}',
+        ),
+        DongThongTin(
+          nhan: 'Giá thuê',
+          giaTri: '${dinhDangVND(h.giaThue)}/tháng',
+        ),
+        DongThongTin(nhan: 'Tiền cọc (VND)', giaTri: dinhDangVND(h.tienCoc)),
+        DongThongTin(
+          nhan: 'Phí dịch vụ',
+          giaTri: '${dinhDangVND(h.cauHinh.phiDichVu)}/tháng',
+        ),
+      ],
+    );
+  }
+}
+
+class HangNutHopDong extends StatelessWidget {
+  const HangNutHopDong({super.key, required this.chinh, this.phu});
+  final Widget chinh;
+  final Widget? phu;
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.all(16),
+    child: LayoutBuilder(
+      builder: (context, c) {
+        if (phu == null) return chinh;
+        if (c.maxWidth < 340 ||
+            MediaQuery.textScalerOf(context).scale(14) > 18) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [chinh, const SizedBox(height: 8), phu!],
+          );
+        }
+        return Row(
+          children: [
+            Expanded(flex: 3, child: chinh),
+            const SizedBox(width: 8),
+            Expanded(flex: 2, child: phu!),
+          ],
+        );
+      },
     ),
-    actions: [
-      TextButton(
-        onPressed: () => Navigator.pop(context),
-        child: const Text('Đóng'),
-      ),
-    ],
-  ),
-);
+  );
+}

@@ -1,4 +1,39 @@
+import 'dart:typed_data';
+
+import 'tien_coc.dart';
+import 'quyet_toan_tien_coc.dart';
+
 enum TrangThaiHopDong { nhap, choKy, choCoc, dangHieuLuc, daKetThuc }
+
+enum LoaiSuKienHopDong { tao, guiKy, ky, datCoc, nhacCoc, quyetToan }
+
+class SuKienHopDong {
+  const SuKienHopDong({
+    required this.loai,
+    required this.tieuDe,
+    required this.thoiGian,
+    this.moTa,
+    this.thamChieu,
+  });
+  final LoaiSuKienHopDong loai;
+  final String tieuDe;
+  final DateTime thoiGian;
+  final String? moTa, thamChieu;
+}
+
+class TaiLieuHopDong {
+  TaiLieuHopDong({
+    required Uint8List noiDung,
+    required this.tenTep,
+    required this.sha256,
+    required this.ngayTao,
+    this.phienBan = 1,
+  }) : noiDung = Uint8List.fromList(noiDung).asUnmodifiableView();
+  final Uint8List noiDung;
+  final String tenTep, sha256;
+  final DateTime ngayTao;
+  final int phienBan;
+}
 
 class CauHinhHopDong {
   const CauHinhHopDong({
@@ -31,6 +66,18 @@ class HopDong {
     required this.tienCoc,
     required this.trangThai,
     this.cauHinh = const CauHinhHopDong(),
+    this.ngayTao,
+    this.guiKyLuc,
+    this.chuTroKyLuc,
+    this.nguoiThueKyLuc,
+    this.taiLieu,
+    this.coc,
+    this.ghiNhanCocLuc,
+    this.diaChiEscrow,
+    this.maGiaoDichCoc,
+    this.lichSu = const [],
+    this.quyetToan,
+    this.thoaThuanKetThucSom,
   });
   final String id;
   final String maHopDong;
@@ -42,6 +89,14 @@ class HopDong {
   final int tienCoc;
   final TrangThaiHopDong trangThai;
   final CauHinhHopDong cauHinh;
+  final DateTime? ngayTao, guiKyLuc, chuTroKyLuc, nguoiThueKyLuc, ghiNhanCocLuc;
+  final TaiLieuHopDong? taiLieu;
+  final TienCoc? coc;
+  final String? diaChiEscrow, maGiaoDichCoc;
+  final List<SuKienHopDong> lichSu;
+  final QuyetToanTienCoc? quyetToan;
+  final ThoaThuanKetThucSom? thoaThuanKetThucSom;
+  bool get daCoChuKy => chuTroKyLuc != null || nguoiThueKyLuc != null;
 
   HopDong copyWith({
     String? id,
@@ -54,6 +109,18 @@ class HopDong {
     int? tienCoc,
     TrangThaiHopDong? trangThai,
     CauHinhHopDong? cauHinh,
+    DateTime? ngayTao,
+    DateTime? guiKyLuc,
+    DateTime? chuTroKyLuc,
+    DateTime? nguoiThueKyLuc,
+    DateTime? ghiNhanCocLuc,
+    TaiLieuHopDong? taiLieu,
+    TienCoc? coc,
+    String? diaChiEscrow,
+    String? maGiaoDichCoc,
+    List<SuKienHopDong>? lichSu,
+    QuyetToanTienCoc? quyetToan,
+    ThoaThuanKetThucSom? thoaThuanKetThucSom,
   }) => HopDong(
     id: id ?? this.id,
     maHopDong: maHopDong ?? this.maHopDong,
@@ -65,5 +132,17 @@ class HopDong {
     tienCoc: tienCoc ?? this.tienCoc,
     trangThai: trangThai ?? this.trangThai,
     cauHinh: cauHinh ?? this.cauHinh,
+    ngayTao: ngayTao ?? this.ngayTao,
+    guiKyLuc: guiKyLuc ?? this.guiKyLuc,
+    chuTroKyLuc: chuTroKyLuc ?? this.chuTroKyLuc,
+    nguoiThueKyLuc: nguoiThueKyLuc ?? this.nguoiThueKyLuc,
+    ghiNhanCocLuc: ghiNhanCocLuc ?? this.ghiNhanCocLuc,
+    taiLieu: taiLieu ?? this.taiLieu,
+    coc: coc ?? this.coc,
+    diaChiEscrow: diaChiEscrow ?? this.diaChiEscrow,
+    maGiaoDichCoc: maGiaoDichCoc ?? this.maGiaoDichCoc,
+    lichSu: lichSu == null ? this.lichSu : List.unmodifiable(lichSu),
+    quyetToan: quyetToan ?? this.quyetToan,
+    thoaThuanKetThucSom: thoaThuanKetThucSom ?? this.thoaThuanKetThucSom,
   );
 }

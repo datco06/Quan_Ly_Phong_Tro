@@ -7,6 +7,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:roomchain_app/chuc_nang/dung_chung/hop_dong/danh_sach_hop_dong.dart';
 import 'package:roomchain_app/chuc_nang/dung_chung/hop_dong/tao_hop_dong.dart';
+import 'package:roomchain_app/chuc_nang/dung_chung/hop_dong/chi_tiet_hop_dong.dart';
+import 'package:roomchain_app/chuc_nang/dung_chung/hop_dong/xem_truoc_hop_dong.dart';
+import 'package:roomchain_app/chuc_nang/dung_chung/hop_dong/tai_lieu_hop_dong.dart';
 import 'package:roomchain_app/dung_chung/du_lieu_mau/kho_hop_dong_mau.dart';
 import 'package:roomchain_app/dung_chung/roomchain_ui.dart';
 import 'package:roomchain_app/ung_dung/dieu_huong.dart';
@@ -14,6 +17,17 @@ import 'package:roomchain_app/ung_dung/dieu_huong.dart';
 void main() {
   const thuMucAnh = String.fromEnvironment('THU_MUC_ANH');
   const tepPhongChu = String.fromEnvironment('TEP_PHONG_CHU');
+  setUp(() {
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(const MethodChannel('net.nfet.printing'), (
+          call,
+        ) async {
+          if (call.method == 'printingInfo') {
+            return {'canRaster': false, 'canShare': true};
+          }
+          return null;
+        });
+  });
   setUpAll(() async {
     if (tepPhongChu.isNotEmpty) {
       await (FontLoader('Roboto')..addFont(
@@ -109,7 +123,10 @@ void main() {
     addTearDown(kho.dispose);
     expect(kho.phong('P502B').giaThue, 3800000);
     expect(kho.nguoiThue.single, same(DuLieuGia.nguoiThue));
-    expect(kho.theoId(DuLieuGia.hopDong.id), same(DuLieuGia.hopDong));
+    expect(
+      kho.theoId(DuLieuGia.hopDong.id)!.giaThue,
+      DuLieuGia.hopDong.giaThue,
+    );
     for (final tt in [
       TrangThaiHopDong.choKy,
       TrangThaiHopDong.choCoc,
@@ -286,8 +303,9 @@ void main() {
     expect(find.text('HD2025-0122'), findsOneWidget);
     await t.tap(find.byKey(const ValueKey('HD2025-0122')));
     await t.pumpAndSettle();
-    expect(find.textContaining('Chưa có màn hình chi tiết'), findsOneWidget);
-    await nhan(t, 'Đóng');
+    expect(find.byType(ChiTietHopDong), findsOneWidget);
+    await t.tap(find.byTooltip('Quay lại'));
+    await t.pumpAndSettle();
     await nhan(t, 'Đang thuê (1)');
     expect(find.text(DuLieuGia.hopDong.maHopDong), findsOneWidget);
     await t.ensureVisible(find.text('Đã kết thúc (1)'));
@@ -417,9 +435,11 @@ void main() {
       expect(moi.cauHinh.ngayGhiSo, 27);
       expect(moi.cauHinh.phuThuCham, 20000);
       expect(moi.cauHinh.noiQuy, 'Giữ yên tĩnh sau 22 giờ.');
+      await t.runAsync(() => const TaiLieuHopDongDemo().lay(kho, moi.id));
       await nhan(t, 'Xem hợp đồng');
-      expect(find.byType(AlertDialog), findsOneWidget);
-      await nhan(t, 'Đóng');
+      expect(find.byType(XemTruocHopDong), findsOneWidget);
+      await t.tap(find.byTooltip('Quay lại'));
+      await t.pumpAndSettle();
       await nhan(t, 'Về danh sách hợp đồng');
       expect(find.byType(TaoHopDong), findsNothing);
       expect(find.text(moi.maHopDong), findsOneWidget);

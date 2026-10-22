@@ -1,4 +1,30 @@
-enum TrangThaiTienCoc { chuaDat, dangKhoa, daHoan, daQuyetToan }
+enum TrangThaiTienCoc {
+  chuaDat,
+  dangKhoa,
+  daHoan,
+  daQuyetToan,
+  choXacNhan,
+  choQuyetToan,
+  choNguoiThueXacNhan,
+  thatBai,
+}
+
+extension HienThiTienCoc on TrangThaiTienCoc {
+  String get nhan => switch (this) {
+    TrangThaiTienCoc.chuaDat => 'Chưa đặt cọc',
+    TrangThaiTienCoc.choXacNhan => 'Chờ xác nhận',
+    TrangThaiTienCoc.dangKhoa => 'Đang khóa',
+    TrangThaiTienCoc.choQuyetToan => 'Chờ quyết toán',
+    TrangThaiTienCoc.choNguoiThueXacNhan => 'Chờ người thuê xác nhận',
+    TrangThaiTienCoc.daHoan => 'Đã hoàn',
+    TrangThaiTienCoc.daQuyetToan => 'Đã phân chia',
+    TrangThaiTienCoc.thatBai => 'Giao dịch thất bại',
+  };
+  bool get dangGiuTrongEscrow =>
+      this == TrangThaiTienCoc.dangKhoa ||
+      this == TrangThaiTienCoc.choQuyetToan ||
+      this == TrangThaiTienCoc.choNguoiThueXacNhan;
+}
 
 class TienCoc {
   const TienCoc({

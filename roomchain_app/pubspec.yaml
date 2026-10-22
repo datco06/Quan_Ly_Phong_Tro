@@ -7,8 +7,12 @@ environment:
   sdk: ^3.13.5
 
 dependencies:
+  crypto: ^3.0.7
+  file_selector: ^1.1.0
   flutter:
     sdk: flutter
+  pdf: ^3.13.1
+  printing: ^5.15.1
 
 dev_dependencies:
   flutter_test:
@@ -19,3 +23,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/hinh_anh/gioi_thieu/
+    - assets/phong_chu/

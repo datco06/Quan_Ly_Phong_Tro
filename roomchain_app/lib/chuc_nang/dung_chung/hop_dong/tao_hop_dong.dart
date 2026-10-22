@@ -609,7 +609,11 @@ class _TaoHopDongState extends State<TaoHopDong> {
             if (widget.khiMoChiTiet != null) {
               widget.khiMoChiTiet!(h.id);
             } else {
-              hienThiHopDongMau(context, h, _kho);
+              Navigator.pushNamed(
+                context,
+                DieuHuong.xemTruocHopDong,
+                arguments: ThamSoHopDong(hopDongId: h.id, kho: _kho),
+              );
             }
           },
         ),
