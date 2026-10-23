@@ -70,6 +70,7 @@ class HopDong {
     this.guiKyLuc,
     this.chuTroKyLuc,
     this.nguoiThueKyLuc,
+    this.nguoiThueDongYLuc,
     this.taiLieu,
     this.coc,
     this.ghiNhanCocLuc,
@@ -90,6 +91,9 @@ class HopDong {
   final TrangThaiHopDong trangThai;
   final CauHinhHopDong cauHinh;
   final DateTime? ngayTao, guiKyLuc, chuTroKyLuc, nguoiThueKyLuc, ghiNhanCocLuc;
+  // Chấp thuận trên giao diện demo, tách riêng với chữ ký ví.
+  final DateTime? nguoiThueDongYLuc;
+  bool get choKyVi => nguoiThueDongYLuc != null && nguoiThueKyLuc == null;
   final TaiLieuHopDong? taiLieu;
   final TienCoc? coc;
   final String? diaChiEscrow, maGiaoDichCoc;
@@ -113,6 +117,7 @@ class HopDong {
     DateTime? guiKyLuc,
     DateTime? chuTroKyLuc,
     DateTime? nguoiThueKyLuc,
+    DateTime? nguoiThueDongYLuc,
     DateTime? ghiNhanCocLuc,
     TaiLieuHopDong? taiLieu,
     TienCoc? coc,
@@ -136,6 +141,7 @@ class HopDong {
     guiKyLuc: guiKyLuc ?? this.guiKyLuc,
     chuTroKyLuc: chuTroKyLuc ?? this.chuTroKyLuc,
     nguoiThueKyLuc: nguoiThueKyLuc ?? this.nguoiThueKyLuc,
+    nguoiThueDongYLuc: nguoiThueDongYLuc ?? this.nguoiThueDongYLuc,
     ghiNhanCocLuc: ghiNhanCocLuc ?? this.ghiNhanCocLuc,
     taiLieu: taiLieu ?? this.taiLieu,
     coc: coc ?? this.coc,

@@ -86,6 +86,7 @@ class KhoHopDongMau extends ChangeNotifier {
   List<HopDong> get danhSach => List.unmodifiable(_danhSach);
   List<PhongTro> get phongTro => DuLieuGia.phongTro;
   List<NguoiDung> get nguoiThue => const [DuLieuGia.nguoiThue];
+  NguoiDung get chuTro => DuLieuGia.chuTro;
 
   PhongTro phong(String id) => phongTro.firstWhere((p) => p.id == id);
   NguoiDung nguoi(String id) => nguoiThue.firstWhere((n) => n.id == id);
@@ -281,6 +282,48 @@ class KhoHopDongMau extends ChangeNotifier {
         ],
       ),
     );
+  }
+
+  // Chỉ ghi nhận ý định ký, không tạo chữ ký hoặc đổi trạng thái thuê.
+  String? kiemTraNguoiThueDongY(String id) {
+    final h = theoId(id);
+    if (h == null) return 'Không tìm thấy hợp đồng.';
+    if (h.trangThai != TrangThaiHopDong.choKy || h.nguoiThueKyLuc != null) {
+      return 'Hợp đồng không ở trạng thái chờ người thuê ký.';
+    }
+    if (h.guiKyLuc == null) return 'Chủ trọ chưa gửi yêu cầu ký hợp đồng.';
+    final c = h.cauHinh;
+    if (!phongTro.any((p) => p.id == h.phongId) ||
+        !nguoiThue.any((n) => n.id == h.nguoiThueId) ||
+        !h.ngayKetThuc.isAfter(h.ngayBatDau) ||
+        h.giaThue <= 0 ||
+        h.tienCoc < 0 ||
+        c.thanhToanTu < 1 ||
+        c.thanhToanDen > 28 ||
+        c.thanhToanDen < c.thanhToanTu ||
+        c.phuThuCham < 0 ||
+        c.ketThucSom.trim().isEmpty) {
+      return 'Thông tin hợp đồng hoặc điều khoản chưa hợp lệ.';
+    }
+    final t = h.taiLieu;
+    if (t == null ||
+        t.noiDung.length < 5 ||
+        String.fromCharCodes(t.noiDung.take(5)) != '%PDF-' ||
+        bam.sha256.convert(t.noiDung).toString() != t.sha256) {
+      return 'Chưa có tài liệu PDF hợp lệ từ chủ trọ.';
+    }
+    return null;
+  }
+
+  void nguoiThueDongY(String id, {required HopDong banDaDoc}) {
+    final h = _batBuoc(id);
+    if (!identical(h, banDaDoc)) {
+      throw StateError('Hợp đồng đã thay đổi. Vui lòng đọc và đồng ý lại.');
+    }
+    final loi = kiemTraNguoiThueDongY(id);
+    if (loi != null) throw StateError(loi);
+    if (h.nguoiThueDongYLuc != null) return;
+    _thay(h.copyWith(nguoiThueDongYLuc: DateTime.now()));
   }
 
   // Các khoản chờ quyết toán vẫn nằm trong escrow, không phải doanh thu VND.

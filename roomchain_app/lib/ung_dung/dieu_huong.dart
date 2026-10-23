@@ -5,6 +5,7 @@ import '../chuc_nang/dung_chung/hop_dong/chi_tiet_hop_dong.dart';
 import '../chuc_nang/dung_chung/hop_dong/xem_truoc_hop_dong.dart';
 import '../chuc_nang/dung_chung/hop_dong/danh_sach_hop_dong.dart';
 import '../chuc_nang/dung_chung/hop_dong/tao_hop_dong.dart';
+import '../chuc_nang/dung_chung/hop_dong/xem_hop_dong_nguoi_thue.dart';
 import '../dung_chung/du_lieu_mau/kho_hop_dong_mau.dart';
 
 import 'package:flutter/material.dart';
@@ -42,6 +43,8 @@ abstract final class DieuHuong {
   static const taoHopDong = '/hop-dong/tao';
   static const chiTietHopDong = '/hop-dong/chi-tiet';
   static const xemTruocHopDong = '/hop-dong/xem-truoc';
+  static const xemHopDongNguoiThue = '/hop-dong/nguoi-thue/xem';
+  static const ketNoiVi = '/vi/ket-noi';
   static const quanLyTienCoc = '/tien-coc';
   static const taoQuyetToan = '/tien-coc/tao-quyet-toan';
   static const ketQuaQuyetToan = '/tien-coc/ket-qua';
@@ -92,18 +95,28 @@ abstract final class DieuHuong {
         );
       case chiTietHopDong:
       case xemTruocHopDong:
+      case xemHopDongNguoiThue:
         final duLieu = thongTin.arguments;
         final ThamSoHopDong thamSo;
         if (duLieu is String && duLieu.isNotEmpty) {
           thamSo = ThamSoHopDong(hopDongId: duLieu);
-        } else if (duLieu is ThamSoHopDong) {
+        } else if (duLieu is ThamSoHopDong &&
+            duLieu.hopDongId.trim().isNotEmpty) {
           thamSo = duLieu;
         } else {
           return null;
         }
-        trang = thongTin.name == chiTietHopDong
-            ? ChiTietHopDong(hopDongId: thamSo.hopDongId, kho: thamSo.kho)
-            : XemTruocHopDong(hopDongId: thamSo.hopDongId, kho: thamSo.kho);
+        trang = switch (thongTin.name) {
+          chiTietHopDong => ChiTietHopDong(
+            hopDongId: thamSo.hopDongId,
+            kho: thamSo.kho,
+          ),
+          xemHopDongNguoiThue => XemHopDongNguoiThue(
+            hopDongId: thamSo.hopDongId,
+            kho: thamSo.kho,
+          ),
+          _ => XemTruocHopDong(hopDongId: thamSo.hopDongId, kho: thamSo.kho),
+        };
       case danhSachHopDong:
         final kho = thongTin.arguments;
         if (kho != null && kho is! KhoHopDongMau) return null;
