@@ -132,30 +132,22 @@ class KetQuaQuyetToan extends StatelessWidget {
             style: KieuChu.chuPhu,
           ),
         ),
-      DongTien(tenKhoanThu: 'Tổng tiền cọc', soTien: q.tienCocBanDau),
-      DongTien(
-        tenKhoanThu: 'Tổng khấu trừ',
-        soTien: q.tongKhauTru,
-        mau: BangMau.loi,
-      ),
+      _dongTien('Tổng tiền cọc', q.tienCocBanDau),
+      _dongTien('Tổng khấu trừ', q.tongKhauTru, mau: BangMau.loi),
       Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
         decoration: BoxDecoration(
           color: BangMau.chinhNhat,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: DongTien(
-          tenKhoanThu: 'Hoàn trả cho người thuê',
-          soTien: q.nguoiThueNhanThamChieu,
+        child: _dongTien(
+          'Hoàn trả cho người thuê',
+          q.nguoiThueNhanThamChieu,
           mau: BangMau.chinh,
           inDam: true,
         ),
       ),
-      DongTien(
-        tenKhoanThu: 'Nhận về cho chủ nhà',
-        soTien: q.chuTroNhanThamChieu,
-        inDam: true,
-      ),
+      _dongTien('Nhận về cho chủ nhà', q.chuTroNhanThamChieu, inDam: true),
       const SizedBox(height: 8),
       const Text(
         'Giá trị tham chiếu VND của biên bản. MockVNDC là token thử nghiệm, không cam kết quy đổi thành VND thật.',
@@ -171,6 +163,15 @@ class KetQuaQuyetToan extends StatelessWidget {
         ),
     ],
   );
+
+  Widget _dongTien(String nhan, int soTien, {Color? mau, bool inDam = false}) =>
+      DefaultTextStyle.merge(
+        style: TextStyle(
+          color: mau,
+          fontWeight: inDam ? FontWeight.w700 : FontWeight.w400,
+        ),
+        child: DongThongTin(nhan: nhan, giaTri: dinhDangVND(soTien)),
+      );
 
   Widget _giaoDich(BuildContext context, HopDong h, QuyetToanTienCoc q) {
     final tx = q.txHashHopLe;
@@ -304,49 +305,52 @@ class KetQuaQuyetToan extends StatelessWidget {
                   moTa: 'Kiểm tra tiền cọc và tổng phân chia trước khi xem kết quả.',
                   bieuTuong: Icons.error_outline,
                 )
-              : ListView(
+              : SingleChildScrollView(
                   padding: const EdgeInsets.all(16),
-                  children: [
-                    _thongTinDau(context, q),
-                    const SizedBox(height: 16),
-                    const Divider(),
-                    _tieuDe('Thông tin hợp đồng'),
-                    _thongTinHopDong(h),
-                    _tieuDe('Trạng thái xác nhận'),
-                    _xacNhan(q),
-                    _tieuDe('Kết quả quyết toán'),
-                    _phanChia(h, q),
-                    _tieuDe('Giao dịch trên blockchain'),
-                    _giaoDich(context, h, q),
-                    const SizedBox(height: 20),
-                    Wrap(
-                      alignment: WrapAlignment.spaceBetween,
-                      spacing: 8,
-                      children: [
-                        TextButton.icon(
-                          onPressed: () => Navigator.pushNamed(
-                            context,
-                            DieuHuong.chiTietHopDong,
-                            arguments: ThamSoHopDong(
-                              hopDongId: h.id,
-                              kho: _kho,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      _thongTinDau(context, q),
+                      const SizedBox(height: 16),
+                      const Divider(),
+                      _tieuDe('Thông tin hợp đồng'),
+                      _thongTinHopDong(h),
+                      _tieuDe('Trạng thái xác nhận'),
+                      _xacNhan(q),
+                      _tieuDe('Kết quả quyết toán'),
+                      _phanChia(h, q),
+                      _tieuDe('Giao dịch trên blockchain'),
+                      _giaoDich(context, h, q),
+                      const SizedBox(height: 20),
+                      Wrap(
+                        alignment: WrapAlignment.spaceBetween,
+                        spacing: 8,
+                        children: [
+                          TextButton.icon(
+                            onPressed: () => Navigator.pushNamed(
+                              context,
+                              DieuHuong.chiTietHopDong,
+                              arguments: ThamSoHopDong(
+                                hopDongId: h.id,
+                                kho: _kho,
+                              ),
                             ),
+                            icon: const Icon(Icons.description_outlined),
+                            label: const Text('Xem hợp đồng'),
                           ),
-                          icon: const Icon(Icons.description_outlined),
-                          label: const Text('Xem hợp đồng'),
-                        ),
-                        TextButton.icon(
-                          onPressed: () => Navigator.pushNamed(
-                            context,
-                            DieuHuong.quanLyTienCoc,
-                            arguments: _kho,
+                          TextButton.icon(
+                            onPressed: () => Navigator.pushNamed(
+                              context,
+                              DieuHuong.quanLyTienCoc,
+                              arguments: _kho,
+                            ),
+                            icon: const Icon(Icons.lock_outline),
+                            label: const Text('Quản lý tiền cọc'),
                           ),
-                          icon: const Icon(Icons.lock_outline),
-                          label: const Text('Quản lý tiền cọc'),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
         ),
       );
@@ -438,7 +442,7 @@ class _MocXacNhan extends StatelessWidget {
               children: [
                 Expanded(child: Text(nhan, style: KieuChu.chuPhu)),
                 const SizedBox(width: 8),
-                Flexible(child: trangThai),
+                Expanded(child: trangThai),
               ],
             );
       return IntrinsicHeight(

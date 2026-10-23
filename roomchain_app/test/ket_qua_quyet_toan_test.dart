@@ -138,8 +138,9 @@ void main() {
       ketQuaMau(hoan: 6000000, nhan: 1000000),
       ketQuaMau(tru: 7000000),
       ketQuaMau(tru: -1),
-    ])
+    ]) {
       expect(sai.phanChiaHopLe, isFalse);
+    }
   });
   test('Hoàn tất cần hai xác nhận, đúng enum giải ngân, hash và thời điểm giao dịch', () {
     expect(ketQuaMau().daHoanTat, isFalse);
@@ -280,8 +281,9 @@ void main() {
         expect(find.byType(Scaffold), findsOneWidget);
         expect(find.byType(ThanhDieuHuongVaiTro), findsNothing);
         expect(t.takeException(), isNull);
-        if (size.width == 390 && chu == 1)
+        if (size.width == 390 && chu == 1) {
           await anh(t, 'l15_ket_qua_quyet_toan');
+        }
         await t.ensureVisible(find.byTooltip('Sao chép Tx Hash'));
         await t.pumpAndSettle();
         expect(t.takeException(), isNull);
@@ -326,7 +328,7 @@ void main() {
       final noiDung = find.text(
         'Phân chia dự kiến theo bản quyết toán, chưa ghi nhận đã nhận tiền.',
       );
-      await t.ensureVisible(find.text('Kết quả quyết toán'));
+      await t.ensureVisible(find.text('Kết quả quyết toán').last);
       await t.pump();
       expect(noiDung, muc.$1.daHoanTat ? findsNothing : findsOneWidget);
       expect(kho.hopDongTheoQuyetToan(muc.$1.id)!.quyetToan, same(muc.$1));
@@ -370,8 +372,9 @@ void main() {
     String? copy;
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(SystemChannels.platform, (call) async {
-          if (call.method == 'Clipboard.setData')
+          if (call.method == 'Clipboard.setData') {
             copy = (call.arguments as Map)['text'] as String;
+          }
           return null;
         });
     addTearDown(
