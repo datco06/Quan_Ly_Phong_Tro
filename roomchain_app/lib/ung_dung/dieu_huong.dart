@@ -9,6 +9,7 @@ import '../chuc_nang/dung_chung/hop_dong/xem_hop_dong_nguoi_thue.dart';
 import '../chuc_nang/dung_chung/vi_blockchain/ket_noi_vi.dart';
 import '../chuc_nang/dung_chung/vi_blockchain/trang_thai_vi_mau.dart';
 import '../chuc_nang/dung_chung/hop_dong/ky_hop_dong.dart';
+import '../chuc_nang/dung_chung/tien_coc/dat_coc.dart';
 import '../dung_chung/du_lieu_mau/kho_hop_dong_mau.dart';
 
 import 'package:flutter/material.dart';
@@ -105,6 +106,7 @@ abstract final class DieuHuong {
       case xemHopDongNguoiThue:
       case ketNoiVi:
       case kyHopDong:
+      case datCoc:
         final duLieu = thongTin.arguments;
         final ThamSoHopDong thamSo;
         if (duLieu is String && duLieu.isNotEmpty) {
@@ -130,6 +132,11 @@ abstract final class DieuHuong {
             vi: thamSo.vi,
           ),
           kyHopDong => KyHopDong(
+            hopDongId: thamSo.hopDongId,
+            kho: thamSo.kho,
+            vi: thamSo.vi,
+          ),
+          datCoc => DatCoc(
             hopDongId: thamSo.hopDongId,
             kho: thamSo.kho,
             vi: thamSo.vi,

@@ -1,3 +1,5 @@
+import 'giao_dich_blockchain.dart';
+
 enum TrangThaiTienCoc {
   chuaDat,
   dangKhoa,
@@ -34,6 +36,7 @@ class TienCoc {
     required this.loaiToken,
     this.diaChiVi,
     required this.trangThai,
+    this.giaoDich,
   });
   final String id;
   final String hopDongId;
@@ -41,6 +44,7 @@ class TienCoc {
   final String loaiToken;
   final String? diaChiVi;
   final TrangThaiTienCoc trangThai;
+  final GiaoDichBlockchain? giaoDich;
 
   TienCoc copyWith({
     String? id,
@@ -50,6 +54,7 @@ class TienCoc {
     String? diaChiVi,
     TrangThaiTienCoc? trangThai,
     bool xoaDiaChiVi = false,
+    GiaoDichBlockchain? giaoDich,
   }) => TienCoc(
     id: id ?? this.id,
     hopDongId: hopDongId ?? this.hopDongId,
@@ -57,5 +62,6 @@ class TienCoc {
     loaiToken: loaiToken ?? this.loaiToken,
     diaChiVi: xoaDiaChiVi ? null : diaChiVi ?? this.diaChiVi,
     trangThai: trangThai ?? this.trangThai,
+    giaoDich: giaoDich ?? this.giaoDich,
   );
 }
