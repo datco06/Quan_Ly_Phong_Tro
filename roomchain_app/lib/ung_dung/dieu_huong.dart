@@ -7,6 +7,8 @@ import '../chuc_nang/dung_chung/hop_dong/danh_sach_hop_dong.dart';
 import '../chuc_nang/dung_chung/hop_dong/tao_hop_dong.dart';
 import '../chuc_nang/dung_chung/hop_dong/xem_hop_dong_nguoi_thue.dart';
 import '../chuc_nang/dung_chung/vi_blockchain/ket_noi_vi.dart';
+import '../chuc_nang/dung_chung/vi_blockchain/trang_thai_vi_mau.dart';
+import '../chuc_nang/dung_chung/hop_dong/ky_hop_dong.dart';
 import '../dung_chung/du_lieu_mau/kho_hop_dong_mau.dart';
 
 import 'package:flutter/material.dart';
@@ -23,9 +25,10 @@ import '../chuc_nang/dung_chung/man_hinh_cho/gioi_thieu_ung_dung_1.dart';
 import '../chuc_nang/dung_chung/man_hinh_cho/gioi_thieu_ung_dung_2.dart';
 
 class ThamSoHopDong {
-  const ThamSoHopDong({required this.hopDongId, this.kho});
+  const ThamSoHopDong({required this.hopDongId, this.kho, this.vi});
   final String hopDongId;
   final KhoHopDongMau? kho;
+  final TrangThaiViMau? vi;
 }
 
 class ThamSoQuyetToan {
@@ -46,6 +49,9 @@ abstract final class DieuHuong {
   static const xemTruocHopDong = '/hop-dong/xem-truoc';
   static const xemHopDongNguoiThue = '/hop-dong/nguoi-thue/xem';
   static const ketNoiVi = '/vi/ket-noi';
+  static const kyHopDong = '/hop-dong/ky';
+  static const datCoc = '/tien-coc/dat';
+  static const trangThaiDatCoc = '/tien-coc/trang-thai-dat';
   static const quanLyTienCoc = '/tien-coc';
   static const taoQuyetToan = '/tien-coc/tao-quyet-toan';
   static const ketQuaQuyetToan = '/tien-coc/ket-qua';
@@ -98,6 +104,7 @@ abstract final class DieuHuong {
       case xemTruocHopDong:
       case xemHopDongNguoiThue:
       case ketNoiVi:
+      case kyHopDong:
         final duLieu = thongTin.arguments;
         final ThamSoHopDong thamSo;
         if (duLieu is String && duLieu.isNotEmpty) {
@@ -117,7 +124,16 @@ abstract final class DieuHuong {
             hopDongId: thamSo.hopDongId,
             kho: thamSo.kho,
           ),
-          ketNoiVi => KetNoiVi(hopDongId: thamSo.hopDongId, kho: thamSo.kho),
+          ketNoiVi => KetNoiVi(
+            hopDongId: thamSo.hopDongId,
+            kho: thamSo.kho,
+            vi: thamSo.vi,
+          ),
+          kyHopDong => KyHopDong(
+            hopDongId: thamSo.hopDongId,
+            kho: thamSo.kho,
+            vi: thamSo.vi,
+          ),
           _ => XemTruocHopDong(hopDongId: thamSo.hopDongId, kho: thamSo.kho),
         };
       case danhSachHopDong:

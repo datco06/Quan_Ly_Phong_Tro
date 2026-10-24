@@ -6,7 +6,10 @@ import '../mo_hinh/tien_coc.dart';
 import '../mo_hinh/quyet_toan_tien_coc.dart';
 import '../mo_hinh/nguoi_dung.dart';
 import '../mo_hinh/phong_tro.dart';
+import '../mo_hinh/giao_dich_blockchain.dart';
 import 'du_lieu_gia.dart';
+
+part 'thao_tac_hop_dong_demo.dart';
 
 // Kho mock trong bộ nhớ, dùng chung giữa danh sách và form.
 class KhoHopDongMau extends ChangeNotifier {
@@ -83,6 +86,13 @@ class KhoHopDongMau extends ChangeNotifier {
   static final dungChung = KhoHopDongMau();
   final List<HopDong> _danhSach = [];
   int _soThuTu = 0;
+  bool _daHuy = false;
+  @override
+  void dispose() {
+    _daHuy = true;
+    super.dispose();
+  }
+
   List<HopDong> get danhSach => List.unmodifiable(_danhSach);
   List<PhongTro> get phongTro => DuLieuGia.phongTro;
   List<NguoiDung> get nguoiThue => const [DuLieuGia.nguoiThue];

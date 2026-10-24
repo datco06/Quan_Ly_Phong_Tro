@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../../../dung_chung/roomchain_ui.dart';
 import '../../../../dung_chung/du_lieu_mau/kho_hop_dong_mau.dart';
+import '../../../../dung_chung/demo/khung_dien_thoai_demo.dart';
 import '../../../../ung_dung/dieu_huong.dart';
 import 'tai_lieu_hop_dong.dart';
 import 'thanh_phan_hop_dong.dart';
 
-// Chạy demo T11 → T12 với PDF do dịch vụ hợp đồng hiện có tạo.
+// Chạy demo T11 → T15 với PDF do dịch vụ hợp đồng hiện có tạo.
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final kho = KhoHopDongMau();
@@ -18,6 +19,7 @@ Future<void> main() async {
       debugShowCheckedModeBanner: false,
       theme: ChuDeUngDung.sang,
       onGenerateRoute: DieuHuong.taoRoute,
+      builder: (context, child) => KhungDienThoaiDemo(child: child!),
       home: XemHopDongNguoiThue(hopDongId: id, kho: kho),
     ),
   );

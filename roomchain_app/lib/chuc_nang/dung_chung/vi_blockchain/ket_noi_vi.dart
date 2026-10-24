@@ -276,8 +276,22 @@ class _KetNoiViState extends State<KetNoiVi> {
                       khiNhan: _vi.ngatKetNoi,
                     ),
                     const SizedBox(height: 12),
+                    NutBam(
+                      nhan: 'Tiếp tục ký hợp đồng',
+                      voHieuHoa: h.nguoiThueDongYLuc == null,
+                      khiNhan: () => Navigator.pushNamed(
+                        context,
+                        DieuHuong.kyHopDong,
+                        arguments: ThamSoHopDong(
+                          hopDongId: h.id,
+                          kho: _kho,
+                          vi: _vi,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
                     const Text(
-                      'Bước đặt cọc T13 chưa được triển khai. Bản demo chưa ký hợp đồng hoặc chuyển token.',
+                      'Ký và đặt cọc ở các bước tiếp theo chỉ là mô phỏng.',
                       style: KieuChu.chuPhu,
                     ),
                   ] else

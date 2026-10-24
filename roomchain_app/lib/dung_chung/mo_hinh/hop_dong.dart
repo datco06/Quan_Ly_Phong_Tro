@@ -71,6 +71,10 @@ class HopDong {
     this.chuTroKyLuc,
     this.nguoiThueKyLuc,
     this.nguoiThueDongYLuc,
+    this.dangKyDemo = false,
+    this.loiKyDemo,
+    this.viNguoiThueKy,
+    this.maBamDaKy,
     this.taiLieu,
     this.coc,
     this.ghiNhanCocLuc,
@@ -93,6 +97,8 @@ class HopDong {
   final DateTime? ngayTao, guiKyLuc, chuTroKyLuc, nguoiThueKyLuc, ghiNhanCocLuc;
   // Chấp thuận trên giao diện demo, tách riêng với chữ ký ví.
   final DateTime? nguoiThueDongYLuc;
+  final bool dangKyDemo;
+  final String? loiKyDemo, viNguoiThueKy, maBamDaKy;
   bool get choKyVi => nguoiThueDongYLuc != null && nguoiThueKyLuc == null;
   final TaiLieuHopDong? taiLieu;
   final TienCoc? coc;
@@ -118,6 +124,11 @@ class HopDong {
     DateTime? chuTroKyLuc,
     DateTime? nguoiThueKyLuc,
     DateTime? nguoiThueDongYLuc,
+    bool? dangKyDemo,
+    String? loiKyDemo,
+    bool xoaLoiKyDemo = false,
+    String? viNguoiThueKy,
+    String? maBamDaKy,
     DateTime? ghiNhanCocLuc,
     TaiLieuHopDong? taiLieu,
     TienCoc? coc,
@@ -142,6 +153,10 @@ class HopDong {
     chuTroKyLuc: chuTroKyLuc ?? this.chuTroKyLuc,
     nguoiThueKyLuc: nguoiThueKyLuc ?? this.nguoiThueKyLuc,
     nguoiThueDongYLuc: nguoiThueDongYLuc ?? this.nguoiThueDongYLuc,
+    dangKyDemo: dangKyDemo ?? this.dangKyDemo,
+    loiKyDemo: xoaLoiKyDemo ? null : loiKyDemo ?? this.loiKyDemo,
+    viNguoiThueKy: viNguoiThueKy ?? this.viNguoiThueKy,
+    maBamDaKy: maBamDaKy ?? this.maBamDaKy,
     ghiNhanCocLuc: ghiNhanCocLuc ?? this.ghiNhanCocLuc,
     taiLieu: taiLieu ?? this.taiLieu,
     coc: coc ?? this.coc,
